@@ -1,5 +1,3 @@
-// tableRenderer.ts
-
 import { PixelData, ImageData } from "../types";
 
 function rgbToHex(pixel: PixelData): string {

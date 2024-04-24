@@ -1,4 +1,4 @@
-import { getImagePixelData } from "../src/imageProcessor";
+import { getImagePixelData } from "../imageProcessor";
 import { createCanvas } from "canvas";
 
 describe("getImagePixelData", () => {

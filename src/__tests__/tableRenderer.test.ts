@@ -1,4 +1,4 @@
-import { renderTable } from "../src/tableRenderer";
+import { renderTable } from "../tableRenderer";
 import { createCanvas } from "canvas";
 
 describe("renderTable", () => {

@@ -4,12 +4,14 @@
     <title>Inline CSS Demo</title>
   </head>
   <body>
-    <script src="./dist/bundle.js"></script>
     <form id="upload-form">
       <input type="file" id="photo-input" accept="image/*" />
       <button type="submit">Process Photo</button>
     </form>
-    <div id="result-container"></div>
+    <div class="container">
+      <div id="result-container"></div>
+    </div>
+    <script src="./dist/bundle.js"></script>
     <script>
       const form = document.getElementById("upload-form");
       const photoInput = document.getElementById("photo-input");
@@ -38,3 +40,13 @@
     </script>
   </body>
 </html>
+
+<style>
+  /* Add your CSS styles here */
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Set the height of the container to the full viewport height */
+  }
+</style>
