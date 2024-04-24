@@ -17,7 +17,7 @@ function rgbToHex(pixel: PixelData): string {
 }
 
 export function renderTable(imageData: ImageData): string {
-  let html = "<table>";
+  let html = `<table style="border-collapse: collapse;">`;
 
   for (let y = 0; y < imageData.height; y++) {
     html += "<tr>";

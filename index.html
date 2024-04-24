@@ -1,21 +1,40 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <title>Inline CSS Demo</title>
   </head>
   <body>
-    <canvas id="canvas" width="400" height="400"></canvas>
     <script src="./dist/bundle.js"></script>
+    <form id="upload-form">
+      <input type="file" id="photo-input" accept="image/*" />
+      <button type="submit">Process Photo</button>
+    </form>
+    <div id="result-container"></div>
     <script>
-      MyLibrary.generatePixels("test.jpg")
-        .then((newContent) => {
-          const newDiv = document.createElement("div");
-          newDiv.innerHTML = newContent;
-          document.body.appendChild(newDiv);
-        })
-        .catch((error) => {
-          console.error("Error generating pixels:", error);
-        });
+      const form = document.getElementById("upload-form");
+      const photoInput = document.getElementById("photo-input");
+      const resultContainer = document.getElementById("result-container");
+
+      form.addEventListener("submit", async (event) => {
+        event.preventDefault();
+
+        const file = photoInput.files[0];
+        if (!file) {
+          alert("Please select a photo first.");
+          return;
+        }
+        const fileUrl = URL.createObjectURL(file);
+        MyLibrary.generatePixels(fileUrl)
+          .then((newContent) => {
+            const newDiv = document.createElement("div");
+            newDiv.innerHTML = newContent;
+            resultContainer.innerHTML = "";
+            resultContainer.appendChild(newDiv);
+          })
+          .catch((error) => {
+            console.error("Error generating pixels:", error);
+          });
+      });
     </script>
   </body>
 </html>
