@@ -26,6 +26,7 @@
           return;
         }
         const fileUrl = URL.createObjectURL(file);
+
         MyLibrary.generatePixels(fileUrl)
           .then((newContent) => {
             const newDiv = document.createElement("div");

@@ -1,6 +1,4 @@
-// imageProcessor.ts
-
-import { PixelData, ImageData } from "../types/types";
+import type { PixelData, ImageData } from "../types/types";
 
 export async function getImagePixelData(imagePath: string): Promise<ImageData> {
   console.log("image", imagePath);
@@ -25,7 +23,7 @@ export async function getImagePixelData(imagePath: string): Promise<ImageData> {
       g: imageData.data[i + 1],
       b: imageData.data[i + 2],
       a: imageData.data[i + 3],
-    });
+    } as PixelData);
   }
 
   return {

@@ -20,4 +20,5 @@ module.exports = {
     library: "MyLibrary", // Replace with your library name
     libraryTarget: "window", // Export as a UMD library
   },
+  mode: "development",
 };

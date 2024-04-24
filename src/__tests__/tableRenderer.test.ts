@@ -1,5 +1,6 @@
 jest.mock("canvas");
 
+import type { PixelData } from "../../types";
 import { renderTable } from "../tableRenderer";
 import { createCanvas } from "canvas";
 
@@ -21,16 +22,20 @@ describe("renderTable", () => {
     const imageData = ctx.getImageData(0, 0, 2, 2);
     const pixels = Array.from(imageData.data);
 
-    const tableHtml = renderTable({
-      width: 2,
-      height: 2,
-      pixels: [
-        { r: pixels[0], g: pixels[1], b: pixels[2], a: pixels[3] },
-        { r: pixels[4], g: pixels[5], b: pixels[6], a: pixels[7] },
-        { r: pixels[8], g: pixels[9], b: pixels[10], a: pixels[11] },
-        { r: pixels[12], g: pixels[13], b: pixels[14], a: pixels[15] },
-      ],
-    });
+    const tableHtml = renderTable(
+      {
+        width: 2,
+        height: 2,
+        pixels: [
+          { r: pixels[0], g: pixels[1], b: pixels[2], a: pixels[3] },
+          { r: pixels[4], g: pixels[5], b: pixels[6], a: pixels[7] },
+          { r: pixels[8], g: pixels[9], b: pixels[10], a: pixels[11] },
+          { r: pixels[12], g: pixels[13], b: pixels[14], a: pixels[15] },
+        ] as PixelData[],
+      },
+      2,
+      2
+    );
 
     const expectedHtml = `<table style="border-collapse: collapse;"><tr><td style="background-color: #000000;"></td><td style="background-color: #000000;"></td></tr><tr><td style="background-color: #000000;"></td><td style="background-color: #000000;"></td></tr></table>`;
     expect(tableHtml).toBe(expectedHtml);
