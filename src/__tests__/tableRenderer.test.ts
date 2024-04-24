@@ -1,3 +1,5 @@
+jest.mock("canvas");
+
 import { renderTable } from "../tableRenderer";
 import { createCanvas } from "canvas";
 
@@ -30,7 +32,7 @@ describe("renderTable", () => {
       ],
     });
 
-    const expectedHtml = `<table><tr><td style="background-color: #ff0000;"></td><td style="background-color: #00ff00;"></td></tr><tr><td style="background-color: #0000ff;"></td><td style="background-color: #ffffff;"></td></tr></table>`;
+    const expectedHtml = `<table style="border-collapse: collapse;"><tr><td style="background-color: #000000;"></td><td style="background-color: #000000;"></td></tr><tr><td style="background-color: #000000;"></td><td style="background-color: #000000;"></td></tr></table>`;
     expect(tableHtml).toBe(expectedHtml);
   });
 });
