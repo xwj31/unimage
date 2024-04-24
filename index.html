@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Inline CSS Demo</title>
+    <title>Unimage demo</title>
   </head>
   <body>
     <div class="container">
@@ -36,16 +36,12 @@
         }
         const fileUrl = URL.createObjectURL(file);
 
-        // Reset resultContainer and cssOutput
         resultContainer.innerHTML = "Loading...";
         htmlOutput.value = "";
 
         generatePixels(fileUrl, widthInput.value, heightInput.value)
           .then((newContent) => {
-            // Set the newContent to the resultContainer
             resultContainer.innerHTML = newContent;
-
-            // Set the raw HTML of newContent to the cssOutput textarea
             htmlOutput.value = newContent;
           })
           .catch((error) => {
