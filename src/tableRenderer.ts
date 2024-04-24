@@ -28,6 +28,7 @@ export function renderTable(
 
 function renderTableAndFit(imageData: ImageData): string {
   let html = `<table style="border-collapse: collapse;">`;
+
   for (let y = 0; y < imageData.height; y++) {
     html += "<tr>";
 
@@ -54,7 +55,6 @@ function renderTableAndScale(
 ): string {
   const scaleX = targetWidth / imageData.width;
   const scaleY = targetHeight / imageData.height;
-
   let html = `<table style="border-collapse: collapse;">`;
 
   for (let y = 0; y < targetHeight; y++) {
