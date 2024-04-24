@@ -16,14 +16,16 @@ export async function getImagePixelData(imagePath: string): Promise<ImageData> {
   const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
   const pixels: PixelData[] = [];
 
-  for (let i = 0; i < imageData.data.length; i += 4) {
-    pixels.push({
-      r: imageData.data[i],
-      g: imageData.data[i + 1],
-      b: imageData.data[i + 2],
-      a: imageData.data[i + 3],
-    } as PixelData);
-  }
+  imageData.data.forEach((value, index) => {
+    if (index % 4 === 0) {
+      pixels.push({
+        r: value,
+        g: imageData.data[index + 1],
+        b: imageData.data[index + 2],
+        a: imageData.data[index + 3],
+      } as PixelData);
+    }
+  });
 
   return {
     width: canvas.width,

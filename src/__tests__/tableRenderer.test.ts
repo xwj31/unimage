@@ -9,7 +9,6 @@ describe("renderTable", () => {
     const canvas = createCanvas(2, 2);
     const ctx = canvas.getContext("2d");
 
-    // Set pixel colors
     ctx.fillStyle = "#ff0000";
     ctx.fillRect(0, 0, 1, 1);
     ctx.fillStyle = "#00ff00";
