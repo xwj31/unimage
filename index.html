@@ -40,7 +40,7 @@
         resultContainer.innerHTML = "Loading...";
         htmlOutput.value = "";
 
-        Unimage.generatePixels(fileUrl, widthInput.value, heightInput.value)
+        generatePixels(fileUrl, widthInput.value, heightInput.value)
           .then((newContent) => {
             // Set the newContent to the resultContainer
             resultContainer.innerHTML = newContent;
