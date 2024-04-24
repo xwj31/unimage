@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Inline CSS Demo</title>
+  </head>
+  <body>
+    <canvas id="canvas" width="400" height="400"></canvas>
+    <script src="./dist/bundle.js"></script>
+    <script>
+      MyLibrary.generatePixels("test.jpg")
+        .then((newContent) => {
+          const newDiv = document.createElement("div");
+          newDiv.innerHTML = newContent;
+          document.body.appendChild(newDiv);
+        })
+        .catch((error) => {
+          console.error("Error generating pixels:", error);
+        });
+    </script>
+  </body>
+</html>
