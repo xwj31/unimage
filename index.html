@@ -4,18 +4,27 @@
     <title>Inline CSS Demo</title>
   </head>
   <body>
-    <form id="upload-form">
-      <input type="file" id="photo-input" accept="image/*" />
-      <button type="submit">Process Photo</button>
-    </form>
     <div class="container">
-      <div id="result-container"></div>
+      <div class="form">
+        <form id="upload-form">
+          <input type="file" id="photo-input" accept="image/*" />
+          <input type="number" id="width" placeholder="Width" />
+          <input type="number" id="height" placeholder="Height" />
+          <button type="submit">Process Photo</button>
+        </form>
+      </div>
+      <div class="image-container" id="result-container"></div>
+      <textarea id="html-output" rows="10" cols="50"></textarea>
     </div>
-    <script src="./dist/bundle.js"></script>
+    <script src="./dist/unimage.js"></script>
     <script>
       const form = document.getElementById("upload-form");
       const photoInput = document.getElementById("photo-input");
+      const widthInput = document.getElementById("width");
+      const heightInput = document.getElementById("height");
+
       const resultContainer = document.getElementById("result-container");
+      const htmlOutput = document.getElementById("html-output");
 
       form.addEventListener("submit", async (event) => {
         event.preventDefault();
@@ -27,12 +36,17 @@
         }
         const fileUrl = URL.createObjectURL(file);
 
-        MyLibrary.generatePixels(fileUrl)
+        // Reset resultContainer and cssOutput
+        resultContainer.innerHTML = "Loading...";
+        htmlOutput.value = "";
+
+        Unimage.generatePixels(fileUrl, widthInput.value, heightInput.value)
           .then((newContent) => {
-            const newDiv = document.createElement("div");
-            newDiv.innerHTML = newContent;
-            resultContainer.innerHTML = "";
-            resultContainer.appendChild(newDiv);
+            // Set the newContent to the resultContainer
+            resultContainer.innerHTML = newContent;
+
+            // Set the raw HTML of newContent to the cssOutput textarea
+            htmlOutput.value = newContent;
           })
           .catch((error) => {
             console.error("Error generating pixels:", error);
@@ -43,11 +57,19 @@
 </html>
 
 <style>
-  /* Add your CSS styles here */
   .container {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 100vh; /* Set the height of the container to the full viewport height */
+    height: 100vh;
+  }
+  .form {
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+  .image-container {
+    margin-top: 20px;
+    margin-bottom: 20px;
   }
 </style>

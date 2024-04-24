@@ -15,9 +15,9 @@ module.exports = {
     extensions: [".tsx", ".ts", ".js"],
   },
   output: {
-    filename: "bundle.js",
+    filename: "unimage.js",
     path: path.resolve(__dirname, "dist"),
-    library: "MyLibrary", // Replace with your library name
+    library: "Unimage", // Replace with your library name
     libraryTarget: "window", // Export as a UMD library
   },
   mode: "development",

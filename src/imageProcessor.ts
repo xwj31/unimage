@@ -1,7 +1,6 @@
 import type { PixelData, ImageData } from "../types/types";
 
 export async function getImagePixelData(imagePath: string): Promise<ImageData> {
-  console.log("image", imagePath);
   const image = await loadImage(imagePath);
   const canvas = document.createElement("canvas");
   const ctx = canvas.getContext("2d");
