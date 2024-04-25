@@ -19,7 +19,8 @@ export function renderTable(
   targetWidth?: number,
   targetHeight?: number
 ): string {
-  if (targetHeight !== undefined && targetWidth !== undefined) {
+  console.log("targetWidth: ", targetWidth);
+  if (targetHeight && targetWidth) {
     return renderTableAndScale(imageData, targetWidth, targetHeight);
   } else {
     return renderTableAndFit(imageData);
