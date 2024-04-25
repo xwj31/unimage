@@ -1,20 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./output.css" />
     <title>Unimage demo</title>
   </head>
   <body>
-    <div class="container">
-      <div class="form">
-        <form id="upload-form">
-          <input type="file" id="photo-input" accept="image/*" />
-          <input type="number" id="width" placeholder="Width" />
-          <input type="number" id="height" placeholder="Height" />
-          <button type="submit">Process Photo</button>
+    <div class="container flex flex-col items-center mx-auto p-4 md:p-8">
+      <div class="form w-full max-w-md mb-4">
+        <form id="upload-form" class="flex flex-col">
+          <input
+            type="file"
+            id="photo-input"
+            accept="image/*"
+            class="mb-2 px-3 py-2 border border-gray-300 rounded"
+          />
+          <div class="flex-col mb-2">
+            <input
+              type="number"
+              id="width"
+              placeholder="Width"
+              class="px-3 mb-2 w-14 py-2 border border-gray-300 rounded mr-2 flex-1"
+            />
+            <input
+              type="number"
+              id="height"
+              placeholder="Height"
+              class="px-3 py-2 border border-gray-300 rounded flex-1"
+            />
+          </div>
+          <button
+            type="submit"
+            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+          >
+            Process Photo
+          </button>
         </form>
       </div>
-      <div class="image-container" id="result-container"></div>
-      <textarea id="html-output" rows="10" cols="50"></textarea>
+
+      <div class="image-container w-full max-w-md mb-4">
+        <div id="result-container"></div>
+      </div>
+
+      <textarea
+        id="html-output"
+        rows="10"
+        class="w-full max-w-md resize-none p-2 border border-gray-300 rounded"
+      ></textarea>
     </div>
     <script src="./dist/unimage.js"></script>
     <script>
@@ -51,21 +84,3 @@
     </script>
   </body>
 </html>
-
-<style>
-  .container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-  }
-  .form {
-    margin-top: 20px;
-    margin-bottom: 20px;
-  }
-  .image-container {
-    margin-top: 20px;
-    margin-bottom: 20px;
-  }
-</style>

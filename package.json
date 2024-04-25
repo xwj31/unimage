@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
-    "build": "webpack",
-    "dev": "webpack --watch",
+    "build": "webpack && npx tailwindcss -i ./input.css -o ./output.css",
+    "dev": "webpack --watch && npx tailwindcss -i ./input.css -o ./output.css --watch",
     "typecheck": "tsc --noEmit"
   },
   "author": "",
@@ -17,6 +17,7 @@
     "@types/node": "^20.12.7",
     "jest": "^29.7.0",
     "jest-canvas-mock": "^2.5.2",
+    "tailwindcss": "^3.4.3",
     "ts-jest": "^29.1.2",
     "ts-loader": "^9.5.1",
     "typescript": "^5.4.5",
